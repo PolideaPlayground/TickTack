@@ -23,9 +23,9 @@ class Counter extends Component {
         const {value} = this.props;
         return (
             <span className="counter">
-                <a className="counter-button left-round-border" href="javascript:void(0)" onClick={this._onDecrementPress}>-</a>
+                <span className="counter-button left-round-border" onClick={this._onDecrementPress}>-</span>
                 <span className="counter-value">{value}</span>
-                <a className="counter-button right-round-border" href="javascript:void(0)" onClick={this._onIncrementPress}>+</a>
+                <span className="counter-button right-round-border" onClick={this._onIncrementPress}>+</span>
             </span>
         );
     }

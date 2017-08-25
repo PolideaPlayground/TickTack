@@ -18,8 +18,12 @@ class SelectProject extends Component {
                         name: "Entry 2"
                     },
                     {
-                        id: 1,
+                        id: 2,
                         name: "Entry 3"
+                    },
+                    {
+                        id: 3,
+                        name: "Entry 4"
                     }
                 ]}/>
             </div>

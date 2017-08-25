@@ -9,13 +9,18 @@ import SelectProjects from './components/SelectProjects/SelectProjects.js'
 import './App.css';
 
 class App extends Component {
+    constructor() {
+        super();
+        console.log("App construct");
+    }
+
     render() {
         return (
             <div className="App">    
                 <Route exact path={Routing.main} component={Redirector}/>
                 <Route path={Routing.login} component={Login}/>
                 <Route path={Routing.timesheetURL} component={TimesheetURL}/>
-                <Route path={Routing.timeFilling} component={TimeOFill}/>
+                <Route path={Routing.timeFilling} render={() => (<TimeOFill/>)}/>
                 <Route path={Routing.projectSelection} component={SelectProjects}/>
             </div>
         );

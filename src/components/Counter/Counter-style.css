@@ -10,6 +10,7 @@
     border: 1px gray solid;
     border-left: 0;
     border-right: 0;
+    user-select: none;
 }
 
 .counter-button {
@@ -19,7 +20,7 @@
     color: white;
     background: gray;
     text-decoration: none;
-
+    user-select: none;
 }
 
 .counter-button:hover {

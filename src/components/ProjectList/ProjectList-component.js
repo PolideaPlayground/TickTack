@@ -8,7 +8,7 @@ class ProjectList extends Component {
     _listItems = (items) => {
         return items.map((item) => {
             const {id, name} = item;
-            return <ProjectListEntry className="projectList-row" name={name}/>
+            return <ProjectListEntry key={id} className="projectList-row" name={name}/>
         })
     };
 
