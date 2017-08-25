@@ -8,7 +8,8 @@ class TimesheetList extends Component {
 
     _listItems = (items) => {
         return items.map((item) => {
-            const {id, name, hours} = item;
+            const {project, hours} = item;
+            const {id, name} = project;
             return <TimesheetListEntry key={id} className="timesheetList-row" name={name} hours={hours}/>
         })
     };

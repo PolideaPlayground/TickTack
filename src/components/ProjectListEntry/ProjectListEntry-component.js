@@ -5,9 +5,9 @@ import classNames from 'classnames'
 
 class ProjectListEntry extends Component {
     render() {
-        const {name} = this.props;
+        const {name, onClick} = this.props;
         return (
-            <div className={classNames("projectListEntry", this.props.className)}>
+            <div className={classNames("projectListEntry", this.props.className)} onClick={onClick}>
                 <div className="projectListEntry-name">{name}</div>
             </div>
         );
@@ -15,7 +15,8 @@ class ProjectListEntry extends Component {
 }
 
 ProjectListEntry.propTypes = {
-    name: PropTypes.string
+    name: PropTypes.string,
+    onClick: PropTypes.func
 };
 
 

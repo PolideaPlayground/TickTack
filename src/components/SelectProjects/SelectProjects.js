@@ -1,34 +1,33 @@
 import React, {Component} from 'react';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
 
-import Header from '../Header/Header-component'
-import ProjectList from '../ProjectList/ProjectList-component'
+import Header from '../Header/Header-component';
+import ProjectList from '../ProjectList/ProjectList-component';
+
+import {addTimesheetEntry} from "../../state/App/App-actions";
 
 class SelectProject extends Component {
+    _projectSelected = (project) => {
+        const {actions} = this.props;
+        actions.addTimesheetEntry(project);
+    };
+
     render() {
+        const {state} = this.props;
         return (
             <div>
                 <Header title="Select project"/>
-                <ProjectList items={[
-                    {
-                        id: 0,
-                        name: "Entry 1"
-                    },
-                    {
-                        id: 1,
-                        name: "Entry 2"
-                    },
-                    {
-                        id: 2,
-                        name: "Entry 3"
-                    },
-                    {
-                        id: 3,
-                        name: "Entry 4"
-                    }
-                ]}/>
+                <ProjectList items={state.projects} onProjectSelected={this._projectSelected}/>
             </div>
         )
     }
 }
 
-export default SelectProject;
+export default connect(state => ({
+        state: state
+    }),
+    (dispatch) => ({
+        actions: bindActionCreators({addTimesheetEntry}, dispatch)
+    })
+)(SelectProject);
