@@ -1,0 +1,8 @@
+.timesheetList {
+    display: flex;
+    flex-direction: column;
+}
+
+.timesheetList-row {
+    padding: 10px;
+}

@@ -1,0 +1,13 @@
+.timesheetListEntry {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.timesheetListEntry-name {
+    flex: 1;
+}
+
+.timesheetListEntry-hours {
+
+}
