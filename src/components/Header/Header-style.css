@@ -1,0 +1,17 @@
+.header {
+    display: flex;
+    flex-direction: row;
+}
+
+.empty {
+    flex: 1;
+}
+
+.plus:hover {
+    color: red;
+}
+
+.plus {
+    font-size: 2em;
+    cursor: pointer;
+}

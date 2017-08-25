@@ -22,7 +22,7 @@ class Counter extends Component {
     render() {
         const {value} = this.props;
         return (
-            <span className="counter">
+            <span className="Counter">
                 <a className="counter-button left-round-border" href="#" onClick={this._onDecrementPress}>-</a>
                 <span className="counter-value">{value}</span>
                 <a className="counter-button right-round-border" href="#" onClick={this._onIncrementPress}>+</a>
