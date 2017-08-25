@@ -5,18 +5,26 @@ import PropTypes from 'prop-types'
 import TimesheetListEntry from '../TimesheetListEntry/TimesheetListEntry-component'
 
 class TimesheetList extends Component {
+
+    _listItems = (items) => {
+        return items.map((item) => {
+            const {id, name, hours} = item;
+            return <TimesheetListEntry className="timesheetList-row" name={name} hours={hours}/>
+        })
+    };
+
     render() {
+        const {items} = this.props;
         return (
             <div className="timesheetList">
-                <TimesheetListEntry className="timesheetList-row" name="Entry1" hours={8}/>
-                <TimesheetListEntry className="timesheetList-row" name="Entry2" hours={4}/>
+                {this._listItems(items)}
             </div>
         );
     }
 }
 
 TimesheetList.propTypes = {
-
+    items: PropTypes.array
 };
 
 export default TimesheetList;

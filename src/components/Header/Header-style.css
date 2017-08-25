@@ -1,4 +1,6 @@
 .header {
+    background: lightgray;
+    padding: 10px;
     display: flex;
     flex-direction: row;
 }
