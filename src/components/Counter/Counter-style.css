@@ -1,0 +1,37 @@
+.counter {
+    display: inline-flex;
+}
+
+.counter-value {
+    display: block;
+    font: large bold;
+    color: gray;
+    padding: 15px 20px 15px 20px;
+    border: 1px gray solid;
+    border-left: 0;
+    border-right: 0;
+}
+
+.counter-button {
+    display: block;
+    padding: 15px 20px 15px 20px;
+    font: large bold;
+    color: white;
+    background: gray;
+    text-decoration: none;
+
+}
+
+.counter-button:hover {
+    background: lightgray;
+}
+
+.left-round-border {
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.right-round-border {
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+}
