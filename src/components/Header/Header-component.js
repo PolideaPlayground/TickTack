@@ -1,28 +1,30 @@
 import './Header-style.css'
 
 import React, {Component} from 'react';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
 class Header extends Component {
-    _selectProject = () => {
-        const {selectProject} = this.props;
-        if (selectProject !== undefined) {
-            selectProject();
+    _addAction = () => {
+        const {addActionCallback} = this.props;
+        if (addActionCallback !== undefined) {
+            addActionCallback();
         }
-        console.log("selectProject clicked");
     };
 
     render() {
+        const {title, addActionCallback} = this.props;
         return (
             <div className="header">
-                <div className="empty" /><div className="plus" onClick={this._selectProject}>+</div>
+                <div className="header-title">{title}</div>
+                { addActionCallback !== undefined && <div className="header-add" onClick={this._addAction}>+</div> }
             </div>
         );
     }
 }
 
 Header.propTypes = {
-    selectProject: PropTypes.func
+    title: PropTypes.string,
+    addActionCallback: PropTypes.func
 };
 
 export default Header;

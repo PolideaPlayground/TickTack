@@ -1,0 +1,13 @@
+.projectListEntry {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.projectListEntry:hover {
+    background: lightgray;
+}
+
+.projectListEntry-name {
+    flex: 1;
+}

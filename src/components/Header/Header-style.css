@@ -1,19 +1,25 @@
 .header {
-    background: lightgray;
+    background: #1a9fd9;
     padding: 10px;
     display: flex;
     flex-direction: row;
+    align-items: center;
+    min-height: 40px !important;
 }
 
-.empty {
+.header-title {
+    font-size: 1.2em;
     flex: 1;
+    color: white;
 }
 
-.plus:hover {
-    color: red;
-}
-
-.plus {
-    font-size: 2em;
+.header-add {
+    font-size: 1.5em;
+    font-weight: bold;
     cursor: pointer;
+    color: white;
+}
+
+.header-add:hover {
+    color: lightgray;
 }

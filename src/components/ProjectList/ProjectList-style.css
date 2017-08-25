@@ -1,0 +1,9 @@
+.projectList {
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+}
+
+.projectList-row {
+    padding: 20px 10px 20px 10px;
+}
