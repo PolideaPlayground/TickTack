@@ -1,0 +1,43 @@
+.TimesheetURL {
+    display: flex;
+    flex-direction: row;
+}
+
+input[type=submit]
+{
+    background-color: #1a9fd9; 
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    padding:10;
+}
+
+input[type=submit]:hover
+{
+    background-color: #277da2; /* Green */
+    color: white;
+}
+
+input[type=url]
+{
+    font-size: 16px;
+    background-color: lightgray;
+    border: 2px solid gray;
+    border-radius: 4px;
+    color: black;
+    padding: 10px 32px;
+    text-align: left;
+    text-decoration: none;
+    display: inline-block;
+    padding:10;
+    margin-right:10px;
+}
+
+h2 {
+    font-size: 25px;
+}

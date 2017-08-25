@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types'
+import './TimesheetURL-style.css'
 
 class TimesheetURL extends Component {
 
@@ -37,7 +38,7 @@ class TimesheetURL extends Component {
             <div>
                 <form onSubmit={this.handleSubmit}>
                     <label>
-                        <h2>Drogi miłosniku czasu, czyli Time-O-Fillu!</h2>
+                        <h2>Drogi miłośniku czasu, czyli Time-O-Fillu!</h2>
                         <h2>Proszę podaj url swojego timesheet'a:</h2>
                         <input type="url" value={this.state.value} onChange={this.handleChange} />
                     </label>
