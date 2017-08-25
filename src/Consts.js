@@ -4,6 +4,6 @@ const Routing = {
     timesheetURL: '/timesheetURL',
     timeFilling: '/time-o-fill',
     projectSelection: '/selectProjects'
-}
+};
 
 export default Routing;
