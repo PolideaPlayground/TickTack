@@ -1,0 +1,17 @@
+.Login {
+    display: flex;
+    flex-direction: column;
+}
+
+.Login-main {
+    flex: 1;
+    padding: 10px;
+}
+
+.Login-button {
+    padding: 15px;
+}
+
+.Login-button:hover {
+    color: lightgray;
+}

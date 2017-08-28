@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 
-import Login from './components/Login/Login.js'
+import Login from './components/Login/Login-component.js'
 import TimesheetURL from './components/TimesheetURL/TimesheetURL.js'
 import TimeOFill from './components/Time-O-Fill/Time-O-Fill.js'
 import SelectProjects from './components/SelectProjects/SelectProjects.js'

@@ -8,7 +8,6 @@ class Counter extends Component {
         if (onDecrementPress !== undefined) {
             onDecrementPress();
         }
-        console.log("dec");
     };
 
     _onIncrementPress = () => {
@@ -16,7 +15,6 @@ class Counter extends Component {
         if (onIncrementPress !== undefined) {
             onIncrementPress();
         }
-        console.log("inc");
     };
 
     render() {

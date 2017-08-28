@@ -1,4 +1,5 @@
 import './Header-style.css'
+import classNames from 'classnames'
 
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
@@ -14,7 +15,7 @@ class Header extends Component {
     render() {
         const {title, addActionCallback} = this.props;
         return (
-            <div className="header">
+            <div className={classNames("header", this.props.className)}>
                 <div className="header-title">{title}</div>
                 { addActionCallback !== undefined && <div className="header-add" onClick={this._addAction}>+</div> }
             </div>

@@ -8,32 +8,19 @@ export const navigationStates = {
 };
 
 const initialState = {
-    navigation: navigationStates.FILL,
-    fill: [
-
-    ],
-    projects: [
-        {
-            id: 0,
-            name: "Entry 1"
-        },
-        {
-            id: 1,
-            name: "Entry 2"
-        },
-        {
-            id: 2,
-            name: "Entry 3"
-        },
-        {
-            id: 3,
-            name: "Entry 4"
-        }
-    ]
+    navigation: navigationStates.LOGIN,
+    fill: [],
+    projects: []
 };
 
 export default function appReducer(state = initialState, action = {}) {
     switch (action.type) {
+        case actionTypes.LOGIN_WITH_GOOGLE_COMPLETED:
+            return {
+                ...state,
+                navigation: navigationStates.FILL,
+                projects: action.projects
+            };
         case actionTypes.SHOW_ADD_TIMESHEET_ENTRY:
             return {
                 ...state,
@@ -41,7 +28,9 @@ export default function appReducer(state = initialState, action = {}) {
             };
         case actionTypes.ADD_TIMESHEET_ENTRY:
             const toBeAddedProject = action.project;
-            if (state.fill.find((item) => {return item.project.id === toBeAddedProject.id}) === undefined) {
+            if (state.fill.find((item) => {
+                    return item.project.id === toBeAddedProject.id
+                }) === undefined) {
                 return {
                     ...state,
                     navigation: navigationStates.FILL,
@@ -53,6 +42,15 @@ export default function appReducer(state = initialState, action = {}) {
                     navigation: navigationStates.FILL
                 }
             }
+        case actionTypes.SET_HOURS_FOR_PROJECT:
+            const toBeSetProject = action.project;
+            const hours = action.hours;
+            return {
+                ...state,
+                fill: state.fill.map((item) => {
+                    return item.project.id === toBeSetProject.id ? {...item, hours: hours} : item;
+                })
+            };
         default:
             return state;
     }
