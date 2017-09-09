@@ -53,7 +53,7 @@ class Login extends Component {
     render() {
         return (
             <div className="Login">
-                <Header className="Login-header" title="Time-O-Fill"/>
+                <Header className="Login-header" title="Login"/>
                 <div className="Login-main">
                     <div className="Login-button" onClick={this._loginButtonPressed}>Login with google</div>
                 </div>

@@ -1,20 +1,21 @@
 import React, {Component} from 'react';
-import './TimesheetList-style.css'
-import PropTypes from 'prop-types'
+import './TimesheetList-style.css';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
-import TimesheetListEntry from '../TimesheetListEntry/TimesheetListEntry-component'
+import TimesheetListEntry from '../TimesheetListEntry/TimesheetListEntry-component';
 
 class TimesheetList extends Component {
 
     _onDidSetHoursForKey = (key, hours) => {
         const {onDidSetHoursForItem, items} = this.props;
-        if (onDidSetHoursForItem === undefined){
+        if (onDidSetHoursForItem === undefined) {
             return;
         }
         const item = items.find((it) => {
             return it.project.id === key;
         });
-        if (item === undefined){
+        if (item === undefined) {
             return;
         }
         onDidSetHoursForItem(item, hours);
@@ -26,7 +27,7 @@ class TimesheetList extends Component {
             const {id, name} = project;
             return <TimesheetListEntry key={id}
                                        id={id}
-                                       className="timesheetList-row"
+                                       className={"timesheetList-row"}
                                        name={name}
                                        hours={hours}
                                        onDidSetHours={this._onDidSetHoursForKey}/>
@@ -36,7 +37,7 @@ class TimesheetList extends Component {
     render() {
         const {items} = this.props;
         return (
-            <div className="timesheetList">
+            <div className={classNames("timesheetList", this.props.className)}>
                 {this._listItems(items)}
             </div>
         );

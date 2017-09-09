@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 
 import Login from './components/Login/Login-component.js'
 import TimesheetURL from './components/TimesheetURL/TimesheetURL.js'
-import TimeOFill from './components/Time-O-Fill/Time-O-Fill.js'
+import TimeOFill from './components/TimesheetFill/TimesheetFill.js'
 import SelectProjects from './components/SelectProjects/SelectProjects.js'
 import './App.css';
 
@@ -18,19 +18,19 @@ class App extends Component {
         let mainComponent;
         switch (state.navigation) {
             case navigationStates.LOGIN:
-                mainComponent = <Login />;
+                mainComponent = <Login/>;
                 break;
             case navigationStates.SETUP_TIMESHEET:
-                mainComponent = <TimesheetURL />;
+                mainComponent = <TimesheetURL/>;
                 break;
             case navigationStates.FILL:
-                mainComponent = <TimeOFill />;
+                mainComponent = <TimeOFill/>;
                 break;
             case navigationStates.ADD_PROJECT:
-                mainComponent = <SelectProjects />;
+                mainComponent = <SelectProjects/>;
                 break;
             default:
-                mainComponent = <Login />;
+                mainComponent = <Login/>;
                 break;
         }
 

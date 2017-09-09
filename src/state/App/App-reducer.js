@@ -9,7 +9,10 @@ export const navigationStates = {
 
 const initialState = {
     navigation: navigationStates.LOGIN,
-    fill: [],
+    timesheet: {
+        date: new Date(),
+        entries: []
+    },
     projects: []
 };
 
@@ -21,6 +24,14 @@ export default function appReducer(state = initialState, action = {}) {
                 navigation: navigationStates.FILL,
                 projects: action.projects
             };
+        case actionTypes.CHANGE_DATE:
+            return {
+                ...state,
+                timesheet: {
+                    ...state.timesheet,
+                    date: action.date
+                }
+            };
         case actionTypes.SHOW_ADD_TIMESHEET_ENTRY:
             return {
                 ...state,
@@ -28,28 +39,37 @@ export default function appReducer(state = initialState, action = {}) {
             };
         case actionTypes.ADD_TIMESHEET_ENTRY:
             const toBeAddedProject = action.project;
-            if (state.fill.find((item) => {
+            if (state.timesheet.entries.find((item) => {
                     return item.project.id === toBeAddedProject.id
                 }) === undefined) {
                 return {
                     ...state,
                     navigation: navigationStates.FILL,
-                    fill: [...state.fill, {project: toBeAddedProject, hours: 1}]
-                }
+                    timesheet: {
+                        ...state.timesheet,
+                        entries: [
+                            ...state.timesheet.entries,
+                            {project: toBeAddedProject, hours: 1}
+                        ]
+                    }
+                };
             } else {
                 return {
                     ...state,
                     navigation: navigationStates.FILL
-                }
+                };
             }
         case actionTypes.SET_HOURS_FOR_PROJECT:
             const toBeSetProject = action.project;
             const hours = action.hours;
             return {
                 ...state,
-                fill: state.fill.map((item) => {
-                    return item.project.id === toBeSetProject.id ? {...item, hours: hours} : item;
-                })
+                timesheet: {
+                    ...state.timesheet,
+                    entries: state.timesheet.entries.map((item) => {
+                        return item.project.id === toBeSetProject.id ? {...item, hours: hours} : item;
+                    })
+                }
             };
         default:
             return state;

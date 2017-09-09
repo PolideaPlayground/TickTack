@@ -1,0 +1,32 @@
+.datePickerBar {
+    background: darkgray;
+    color: white;
+    padding: 0px 0px 0px 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    min-height: 40px !important;
+    font-size: 1.2em;
+}
+
+.datePickerBar-date {
+    flex: 1;
+    text-align: center;
+}
+
+.datePickerBar-button {
+    user-select: none;
+    padding: 15px;
+}
+
+.datePickerBar-button:hover {
+    color: lightgray;
+}
+
+.datePickerBar-button-left {
+
+}
+
+.datePickerBar-button-right {
+
+}
