@@ -17,7 +17,7 @@ class SetupStage extends Component {
     _onLoginRequest = () => {
         const {context, actions} = this.props;
 
-        if (context.googleClient.isLoggedIn){
+        if (context.googleClient.isLoggedIn()){
             actions.loginWithGoogleCompleted();
         } else {
 

@@ -16,6 +16,7 @@ export class SheetManager {
     }
 
     listProjects(callback) {
+        // Help here: https://developers.google.com/sheets/api/quickstart/js
         window.gapi.client.sheets.spreadsheets.values.get({
             spreadsheetId: this.spreadsheetId,
             range: this.month,

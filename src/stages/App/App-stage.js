@@ -16,12 +16,9 @@ import './App-style.css';
 class AppStage extends Component {
     constructor(props) {
         super(props);
-        console.log("App constructor");
     }
 
     render() {
-        console.log("App render");
-
         const {context, state} = this.props;
 
         if (!context.isReady()) {
