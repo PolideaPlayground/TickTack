@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {createStore, combineReducers} from 'redux';
+import {applyMiddleware as applyReduxMiddleware, combineReducers, createStore as createReduxStore} from 'redux';
 import {Provider} from 'react-redux';
 import {BrowserRouter} from 'react-router-dom';
 
@@ -12,6 +12,8 @@ import setupReducer from './model/Setup/Setup-reducer';
 
 import AppStage from './stages/App/App-stage';
 
+import reduxLogger from 'redux-logger'
+
 const googleClient = new GoogleClient(
     Consts.GOOGLE_CLIENT_ID,
     Consts.GOOGLE_DISCOVERY_DOCS,
@@ -20,7 +22,10 @@ const googleClient = new GoogleClient(
 const context = new Context(googleClient);
 
 const reducer = combineReducers({"setup": setupReducer});
-const store = createStore(reducer);
+const store = createReduxStore(
+    reducer,
+    applyReduxMiddleware(reduxLogger)
+);
 
 ReactDOM.render((
         <Provider store={store}>
