@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import Header from '../Header/Header-component';
 import ProjectList from '../ProjectList/ProjectList-component';
 
-import {addTimesheetEntry} from "../../state/App/App-actions";
+import {addTimesheetEntry} from "../../model/App/App-actions";
 
 class SelectProject extends Component {
     _projectSelected = (project) => {

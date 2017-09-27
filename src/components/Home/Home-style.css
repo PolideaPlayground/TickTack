@@ -1,17 +1,17 @@
-.timesheetFill {
+.home {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 
-.timesheetFill-header {
+.home-header {
 
 }
 
-.timesheetFill-dateBar {
+.home-datePicker {
 
 }
 
-.timesheetFill-list {
+.home-list {
     flex: 1;
 }
