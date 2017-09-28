@@ -16,9 +16,7 @@ class HomeStage extends Component {
         super(props);
         this.sheetManager = new SheetManager();
         this.state = {
-            projects: [
-                'alamakota'
-            ],
+            projects: [],
             hasLoadedProjects: false
         };
     }

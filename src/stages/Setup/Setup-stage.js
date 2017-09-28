@@ -42,7 +42,11 @@ class SetupStage extends Component {
     };
 
     _renderTimesheetSetup = () => {
-        return <SetupTimesheet onTimesheetURLEntered={this._onTimesheetURLEntered}/>
+        const {state} = this.props;
+        return <SetupTimesheet
+            previousUrl={state.stored.timesheetUrl}
+            onTimesheetURLEntered={this._onTimesheetURLEntered}
+        />
     };
 
     render() {

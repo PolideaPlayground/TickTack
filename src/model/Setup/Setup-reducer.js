@@ -21,7 +21,11 @@ export default function appReducer(state = initialState, action = {}) {
             if (ret === null || ret.length !== 2) {
                 return {...state, error: "Invalid spreadsheets URL"};
             } else {
-                return {...state, spreadsheetId: ret[1], error: null};
+                return {
+                    ...state,
+                    spreadsheetId: ret[1],
+                    error: null
+                };
             }
         default:
             return state;
