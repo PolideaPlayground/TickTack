@@ -16,6 +16,7 @@ class GoogleClient {
             reject("GoogleClient: already initialized");
         }
 
+        // Help here: https://developers.google.com/sheets/api/quickstart/js
         this.gapi.load('client:auth2', () => {
             console.log("GoogleClient: loaded");
             this.gapi.client.init({

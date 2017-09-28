@@ -6,13 +6,19 @@ import ProjectListEntry from '../ProjectListEntry/ProjectListEntry-component'
 
 class ProjectList extends Component {
     _listItems = (items) => {
+
         return items.map((item) => {
             const {onProjectSelected} = this.props;
             const {id, name} = item;
             const callback = () => {
                 onProjectSelected(item)
             };
-            return <ProjectListEntry key={id} className="projectList-row" name={name} onClick={callback}/>
+            return <ProjectListEntry
+                key={id}
+                className="projectList-row"
+                name={name}
+                onClick={callback}
+            />
         })
     };
 

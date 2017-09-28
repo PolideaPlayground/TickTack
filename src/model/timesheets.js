@@ -3,45 +3,34 @@ class Project {
         this.name = name
     }
 
-    toString(){
+    toString() {
         return this.name
     }
 }
 
 export class SheetManager {
-    constructor(spreadsheetId, month) {
-        this.spreadsheetId = spreadsheetId;
-        this.month = month;
-        this.sheet = null;
-    }
 
-    listProjects(callback) {
-        // Help here: https://developers.google.com/sheets/api/quickstart/js
-        window.gapi.client.sheets.spreadsheets.values.get({
-            spreadsheetId: this.spreadsheetId,
-            range: this.month,
+    listProjects = ({spreadsheetId, month}) => {
+        return window.gapi.client.sheets.spreadsheets.values.get({
+            spreadsheetId: spreadsheetId,
+            range: month,
         }).then((response) => {
-            let range = response.result;
-            this.sheet = range;
-            if (range.values.length >= 9) {
-                let projects = [];
-                console.log("row", range);
-                for (let i = 9; i < range.values.length; i++) {
-                    let row = range.values[i];
-                    let projectName = row[0];
-                    if (projectName != null) {
-                        projects.push(new Project(projectName));
-                    }
-                    // Print columns A and E, which correspond to indices 0 and 4.
+            console.log(response);
+            const {result} = response;
+            const {range, values} = result;
+            const projectNames = [];
+            for (let i = 9; i < values.length; i++) {
+                const row = values[i];
+                const projectName = row[0];
+                if (!!projectName) {
+                    projectNames.push(projectName);
                 }
-                callback(projects)
-            } else {
-                callback([])
             }
-        }, function(response) {
-            console.log("Error OH My!! " + response);
+            return projectNames;
+        }).catch((error) => {
+            console.log(error);
         });
-    }
+    };
 
     getColumnNumberForDate(date) {
         let month = date.getMonth();
@@ -56,7 +45,7 @@ export class SheetManager {
         window.gapi.client.sheets.spreadsheets.values.get({
             spreadsheetId: this.spreadsheetId,
             range: this.month,
-        }).then(function(response) {
+        }).then(function (response) {
             let range = response.result;
             if (range.values.length >= 9) {
                 var projects = [];
@@ -72,7 +61,7 @@ export class SheetManager {
             } else {
                 callback([])
             }
-        }, function(response) {
+        }, function (response) {
             console.log("Error OH My!! " + response);
         });
     }
