@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {Switch, Route, withRouter} from 'react-router';
+import {Route, Switch, withRouter} from 'react-router';
 import {Redirect} from 'react-router-dom';
 
 import Splash from '../../components/Splash/Splash-component';
@@ -14,9 +14,11 @@ import Routes from '../../Routes';
 import './App-style.css';
 
 class AppStage extends Component {
-    constructor(props) {
-        super(props);
-    }
+
+    logOut = () => {
+        const {context, state} = this.props;
+        context.googleClient.logOut();
+    };
 
     render() {
         const {context, state} = this.props;
@@ -33,10 +35,20 @@ class AppStage extends Component {
         } else {
             return (
                 <div className="App">
+                    <div>
+                        <button>
+                            <a href="/">
+                                Home
+                            </a>
+                        </button>
+                        <button onClick={() => this.logOut()}>
+                            Log out
+                        </button>
+
+                    </div>
                     <Switch>
                         <Route path={Routes.home} exact render={() => <HomeStage context={context}/>}/>
-                        <Route path={Routes.setup} render={() => <SetupStage context={context}/>}
-                        />
+                        <Route path={Routes.setup} render={() => <SetupStage context={context}/>}/>
                         <Route render={() => <Redirect to={Routes.home}/>}/>
                     </Switch>
                 </div>

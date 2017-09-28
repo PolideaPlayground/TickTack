@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {Switch, Route, withRouter, Redirect} from 'react-router'
+import {Redirect, Route, Switch, withRouter} from 'react-router'
 
 import Routes from '../../Routes';
 
@@ -17,10 +17,12 @@ class SetupStage extends Component {
     _onLoginRequest = () => {
         const {context, actions} = this.props;
 
-        if (context.googleClient.isLoggedIn()){
-            actions.loginWithGoogleCompleted();
+        if (!context.googleClient.isLoggedIn()) {
+            context.googleClient.logIn().then(() => {
+                actions.loginWithGoogleCompleted();
+            });
         } else {
-
+            actions.loginWithGoogleCompleted();
         }
     };
 
@@ -34,17 +36,17 @@ class SetupStage extends Component {
     };
 
     _onTimesheetURLEntered = (url) => {
-        const { actions } = this.props;
+        const {actions} = this.props;
 
         actions.setTargetTimesheet(url);
     };
 
     _renderTimesheetSetup = () => {
-        return <SetupTimesheet onTimesheetURLEntered={this._onTimesheetURLEntered} />
+        return <SetupTimesheet onTimesheetURLEntered={this._onTimesheetURLEntered}/>
     };
 
     render() {
-        const { state } = this.props;
+        const {state} = this.props;
 
         if (isSetupDone(state.setup)) {
             return <Redirect to={Routes.home}/>;
