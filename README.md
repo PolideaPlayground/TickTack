@@ -1,8 +1,8 @@
-# PolideaPlayground / time-o-fill
+# TickTack
 
 Polidea Timesheets made simple.
 
-# Quick start
+## Quick start
 
 ```bash
 nvm install
