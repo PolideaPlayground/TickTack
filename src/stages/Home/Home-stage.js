@@ -7,6 +7,7 @@ import {Redirect} from 'react-router-dom';
 import Routes from '../../Routes';
 import {SheetManager} from '../../model/timesheets'
 import ProjectList from '../../components/ProjectList/ProjectList-component'
+import moment from 'moment'
 
 import {isSetupDone} from '../../model/Setup/Setup-reducer';
 
@@ -29,9 +30,11 @@ class HomeStage extends Component {
         }
 
         if (!this.state.hasLoadedProjects) {
+            const now = moment();
+            const monthName = now.format('MMMM');
             this.sheetManager.listProjects({
                 spreadsheetId: state.setup.spreadsheetId,
-                month: 'September'
+                month: monthName
             }).then((projectNames) => {
                 this.setState({
                     projects: projectNames,
