@@ -16,30 +16,30 @@ class GoogleClient {
             reject("GoogleClient: already initialized");
         }
 
+        // Help here: https://developers.google.com/sheets/api/quickstart/js
         this.gapi.load('client:auth2', () => {
             console.log("GoogleClient: loaded");
             this.gapi.client.init({
                 discoveryDocs: this.config.discoveryDocs,
                 clientId: this.config.clientId,
                 scope: this.config.scope
-            })
-                .then(() => {
-                    console.log("GoogleClient: initiated");
-                    this.ready = true;
-                    resolve();
-                    // this.gapi.auth2.getAuthInstance().isSignedIn.listen(this._updateSigninStatus);
-                    // this._updateSigninStatus(this.gapi.auth2.getAuthInstance().isSignedIn.get());
-                });
+            }).then(() => {
+                console.log("GoogleClient: initiated");
+                this.gapi.auth2.getAuthInstance().isSignedIn.listen(this._updateSignInStatus);
+                this._updateSignInStatus(this.gapi.auth2.getAuthInstance().isSignedIn.get());
+                this.ready = true;
+                resolve();
+            });
         });
     });
 
-    // _updateSigninStatus = (isSignedIn) => {
-    //     if (isSignedIn) {
-    //         console.log("GoogleClient: logged in");
-    //     } else {
-    //         console.log("GoogleClient: not logged");
-    //     }
-    // };
+    _updateSignInStatus = (isSignedIn) => {
+        if (isSignedIn) {
+            console.log("GoogleClient: logged in");
+        } else {
+            console.log("GoogleClient: not logged");
+        }
+    };
 
     isReady = () => {
         return this.ready;
@@ -49,12 +49,20 @@ class GoogleClient {
         return this.gapi.auth2.getAuthInstance().isSignedIn.get();
     };
 
-    //
-    //
-    // _loginButtonPressed = () => {
-    //     window.gapi.auth2.getAuthInstance().signIn();
-    // };
-    //
+    logIn = () => {
+        return this.gapi.auth2.getAuthInstance().signIn()
+            .then(() => {
+                console.log("Sign-in succeed :-)");
+            })
+            .catch(() => {
+                console.log("Sign-in failed :-(");
+            });
+    };
+
+    logOut = () => {
+        this.gapi.auth2.getAuthInstance().signOut();
+    };
+
     // updateSigninStatus = (isSignedIn) => {
     //     const {actions} = this.props;
     //     if (isSignedIn) {
