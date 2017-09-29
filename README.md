@@ -2,6 +2,10 @@
 
 Polidea Timesheets made simple.
 
+## WARNING
+
+This repository is **obsolete**! The proper one: https://gitlab2.polidea.com/Internal/TickTack 
+
 ## Quick start
 
 ```bash
