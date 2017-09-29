@@ -18,8 +18,22 @@ class HomeStage extends Component {
         this.sheetManager = new SheetManager();
         this.state = {
             projects: [],
-            hasLoadedProjects: false
+            hasLoadedProjects: false,
+            selectedProject: undefined
         };
+    }
+
+    _handleSubmit(event, monthName, dayNumber) {
+        event.preventDefault();
+        const {state} = this.props;
+        const hours = event.target.hours.value;
+        this.sheetManager.setHours({
+            spreadsheetId: state.setup.spreadsheetId,
+            month: monthName,
+            day: dayNumber,
+            project: this.state.selectedProject,
+            hours: hours
+        })
     }
 
     render() {
@@ -29,9 +43,11 @@ class HomeStage extends Component {
             return <Redirect to={Routes.setup}/>;
         }
 
+        const now = moment();
+        const monthName = now.format('MMMM');
+        const dayNumber = now.format('D');
+
         if (!this.state.hasLoadedProjects) {
-            const now = moment();
-            const monthName = now.format('MMMM');
             this.sheetManager.listProjects({
                 spreadsheetId: state.setup.spreadsheetId,
                 month: monthName
@@ -53,10 +69,24 @@ class HomeStage extends Component {
         return (
             <div className="Home">
                 Home
+                <div>
+                    <form onSubmit={(event) => this._handleSubmit(event, monthName, dayNumber)}>
+                        <input type="number"
+                               name="hours"
+                               defaultValue={8}
+                        />
+                        <input type="submit"
+                               value="Save"
+                               disabled={!this.state.selectedProject}
+                        />
+                    </form>
+                </div>
                 <ProjectList
                     items={items}
                     onProjectSelected={({id, name}) => {
-                        console.log(`Selected: ID "${id}", Name "${name}"`)
+                        this.setState({
+                            selectedProject: name
+                        });
                     }}
                 />
             </div>
